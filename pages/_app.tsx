@@ -1,13 +1,17 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import { DefaultSeo } from 'next-seo';
+import type { AppProps } from 'next/app';
+import { Footer, InformationBar, Navbar } from '../src/components';
+import '../src/styles/globals.css';
+import AppWrapper from './AppWrapper';
 
-function MyApp({ Component, pageProps }) {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <ChakraProvider>
-      <DefaultSeo titleTemplate={`%s | Lorem Ipsum Blog`} />
+    <AppWrapper>
+      <InformationBar />
+      <Navbar />
       <Component {...pageProps} />
-    </ChakraProvider>
+      <Footer />
+    </AppWrapper>
   );
-}
+};
 
-export default MyApp;
+export default App;

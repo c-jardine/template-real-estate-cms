@@ -1,8 +1,27 @@
-import { Text } from '@chakra-ui/react';
-// import { HomePageProps, HomePageStaticPropsResponse } from '../types';
+import { Box } from '@chakra-ui/react';
+import { NextPage } from 'next';
+import {
+  Clients,
+  HomeHero,
+  PropertyCards,
+  PropertyTypes,
+  RealtorCards,
+} from '../src/components';
+import { PageLayout } from '../src/layouts';
 
-const HomePage = (props) => {
-  return <Text>Test</Text>;
+const HomePage: NextPage = () => {
+  return (
+    <>
+      <PageLayout>
+        <HomeHero />
+        <PropertyCards />
+        <RealtorCards />
+        <PropertyTypes />
+        <Clients />
+        <Box />
+      </PageLayout>
+    </>
+  );
 };
 
 export default HomePage;

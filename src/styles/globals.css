@@ -1,0 +1,7 @@
+p {
+  color: var(--chakra-colors-bodyText) !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
