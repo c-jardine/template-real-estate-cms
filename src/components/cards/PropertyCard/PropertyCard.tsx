@@ -20,6 +20,7 @@ const PropertyCard = (props: PropertyProps) => {
   return (
     <Stack justifyContent="center" textAlign="center" spacing={4}>
       <Box
+        className="safariCornerBugFix"
         as={Link}
         href={`/property/${props._id}`}
         role="group"
@@ -35,10 +36,8 @@ const PropertyCard = (props: PropertyProps) => {
               : 'https://via.placeholder.com/256x512?text=NO+IMAGE+PROVIDED'
           }
           alt=""
-          // alt={props.imgAlt}
           h={64}
           w="full"
-          rounded="xl"
           objectFit="cover"
           transition="200ms ease-in-out"
           _groupHover={{ transform: 'scale(1.1)' }}

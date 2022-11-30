@@ -5,3 +5,7 @@ p {
 a:hover {
   text-decoration: none !important;
 }
+
+.safariCornerBugFix {
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
