@@ -23,5 +23,5 @@ export const filterPropertiesQuery = groq`
     && listing.price.amount >= $minPrice && listing.price.amount <= $maxPrice
     && features.bedrooms >= $bedrooms
     && features.bathrooms.full >= $bathrooms
-  ] {...}
+  ] {..., "listing": listing{..., realtor->{slug, name, image}}}
 `;
