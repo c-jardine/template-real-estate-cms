@@ -1,0 +1,7 @@
+{
+  "extends": "next",
+  "plugins": [],
+  "rules": {
+    "semi": "error"
+  }
+}
