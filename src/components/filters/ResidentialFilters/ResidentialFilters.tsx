@@ -9,62 +9,68 @@ import {
   StackDivider,
   Text,
 } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { FiltersEnum, setFilter } from '../../../redux/slices/filtersSlice';
+import { RootState } from '../../../redux/store';
 
-const ResidentialFilters = (props) => {
+const ResidentialFilters = () => {
+  const dispatch = useDispatch();
+  const filters = useSelector((state: RootState) => state.filtersReducer);
+
   return (
     <Stack spacing={4} divider={<StackDivider />}>
       <Box>
         <Flex
-          justifyContent='space-between'
-          fontSize='sm'
-          textTransform='uppercase'
+          justifyContent="space-between"
+          fontSize="sm"
+          textTransform="uppercase"
         >
-          <Text fontWeight='semibold'>Bedrooms</Text>
-          <Text fontWeight='semibold' color='brand.500 !important'>
-            {props.filters.bedrooms}+
+          <Text fontWeight="semibold">Bedrooms</Text>
+          <Text fontWeight="semibold" color="brand.500 !important">
+            {filters.bedrooms}+
           </Text>
         </Flex>
         <Slider
-          aria-label='number of bedrooms'
+          aria-label="number of bedrooms"
           min={0}
           max={10}
           step={1}
-          value={props.filters.bedrooms}
+          value={filters.bedrooms}
           onChange={(val) =>
-            props.setFilters({ ...props.filters, bedrooms: val })
+            dispatch(setFilter({ filter: FiltersEnum.BEDROOMS, value: val }))
           }
         >
-          <SliderTrack bg='brand.100'>
-            <SliderFilledTrack bg='brand.500' />
+          <SliderTrack bg="brand.100">
+            <SliderFilledTrack bg="brand.500" />
           </SliderTrack>
-          <SliderThumb bg='brand.500' />
+          <SliderThumb bg="brand.500" />
         </Slider>
       </Box>
       <Box>
         <Flex
-          justifyContent='space-between'
-          fontSize='sm'
-          textTransform='uppercase'
+          justifyContent="space-between"
+          fontSize="sm"
+          textTransform="uppercase"
         >
-          <Text fontWeight='semibold'>Bathrooms</Text>
-          <Text fontWeight='semibold' color='brand.500 !important'>
-            {props.filters.bathrooms}+
+          <Text fontWeight="semibold">Bathrooms</Text>
+          <Text fontWeight="semibold" color="brand.500 !important">
+            {filters.bathrooms}+
           </Text>
         </Flex>
         <Slider
-          aria-label='number of bathrooms'
+          aria-label="number of bathrooms"
           min={0}
           max={10}
           step={1}
-          value={props.filters.bathrooms}
+          value={filters.bathrooms}
           onChange={(val) =>
-            props.setFilters({ ...props.filters, bathrooms: val })
+            dispatch(setFilter({ filter: FiltersEnum.BATHROOMS, value: val }))
           }
         >
-          <SliderTrack bg='brand.100'>
-            <SliderFilledTrack bg='brand.500' />
+          <SliderTrack bg="brand.100">
+            <SliderFilledTrack bg="brand.500" />
           </SliderTrack>
-          <SliderThumb bg='brand.500' />
+          <SliderThumb bg="brand.500" />
         </Slider>
       </Box>
     </Stack>

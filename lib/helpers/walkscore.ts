@@ -33,7 +33,7 @@ const walkscoreParams = (
 ) => {
   return {
     method: 'GET',
-    url: 'https://walk-score.p.rapidapi.com/score',
+    url: process.env.NEXT_PUBLIC_WALKSCORE_URL,
     params: {
       lat: coordinates.lat,
       address: address,

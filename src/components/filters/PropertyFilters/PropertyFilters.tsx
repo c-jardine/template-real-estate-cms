@@ -14,69 +14,91 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { client, filterPropertiesQuery } from '../../../../lib/sanity';
-import { initialFilters } from '../../../../pages/property';
+import { FiltersEnum, setFilter } from '../../../redux/slices/filtersSlice';
+import { RootState } from '../../../redux/store';
 import { ResidentialFilters } from '../ResidentialFilters';
 
-const PropertyFilters = (props: { loading; setLoading; setProperties }) => {
-  const [filters, setFilters] = React.useState(initialFilters);
+const PropertyFilters = (props: { loading; setLoading; setResults }) => {
+  const dispatch = useDispatch();
+  const filters = useSelector((state: RootState) => state.filtersReducer);
 
   const updateProperties = React.useCallback(async () => {
     props.setLoading(true);
-    const data = await client.fetch(filterPropertiesQuery, filters);
-    data && props.setProperties(data);
+    const data = await client(false).fetch(filterPropertiesQuery, filters);
+    data && props.setResults(data);
     data && props.setLoading(false);
   }, [filters, props]);
 
   return (
-    <Stack gridColumn='1' spacing={4} divider={<StackDivider />}>
+    <Stack gridColumn="1" spacing={4} divider={<StackDivider />}>
       <Button
         onClick={updateProperties}
         disabled={props.loading}
-        colorScheme='brand'
+        colorScheme="brand"
       >
         Update
       </Button>
       <Box>
-        <Text fontSize='sm' textTransform='uppercase' fontWeight='semibold'>
+        <Text fontSize="sm" textTransform="uppercase" fontWeight="semibold">
           Property type
         </Text>
         <Select
-          placeholder='Select property type'
+          placeholder="Select property type"
           value={filters.propertyType}
           onChange={(e) =>
-            setFilters({ ...filters, propertyType: e.target.value })
+            dispatch(
+              setFilter({
+                filter: FiltersEnum.PROPERTY_TYPE,
+                value: e.target.value,
+              })
+            )
           }
         >
-          <option value='residentialProperty'>Residential</option>
-          <option value='commercialProperty'>Commercial</option>
-          <option value='landProperty'>Land</option>
+          <option value="residentialProperty">Residential</option>
+          <option value="commercialProperty">Commercial</option>
+          <option value="landProperty">Land</option>
         </Select>
       </Box>
       <Box>
-        <Text fontSize='sm' textTransform='uppercase' fontWeight='semibold'>
+        <Text fontSize="sm" textTransform="uppercase" fontWeight="semibold">
           Listing type
         </Text>
         <RadioGroup
           value={filters.listingType}
-          onChange={(val) => setFilters({ ...filters, listingType: val })}
+          onChange={(val) =>
+            dispatch(
+              setFilter({ filter: FiltersEnum.LISTING_TYPE, value: val })
+            )
+          }
         >
           <Stack>
             <Box
-              onClick={() =>
-                setFilters({ ...filters, minPrice: 0, maxPrice: 5000 })
-              }
+              onClick={() => {
+                dispatch(
+                  setFilter({ filter: FiltersEnum.MIN_PRICE, value: 0 })
+                );
+                dispatch(
+                  setFilter({ filter: FiltersEnum.MAX_PRICE, value: 5000 })
+                );
+              }}
             >
-              <Radio value='rental' colorScheme='brand'>
+              <Radio value="rental" colorScheme="brand">
                 For rent
               </Radio>
             </Box>
             <Box
-              onClick={() =>
-                setFilters({ ...filters, minPrice: 0, maxPrice: 1000000 })
-              }
+              onClick={() => {
+                dispatch(
+                  setFilter({ filter: FiltersEnum.MIN_PRICE, value: 0 })
+                );
+                dispatch(
+                  setFilter({ filter: FiltersEnum.MAX_PRICE, value: 1000000 })
+                );
+              }}
             >
-              <Radio value='sale' colorScheme='brand'>
+              <Radio value="sale" colorScheme="brand">
                 For sale
               </Radio>
             </Box>
@@ -85,12 +107,12 @@ const PropertyFilters = (props: { loading; setLoading; setProperties }) => {
       </Box>
       <Box>
         <Flex
-          justifyContent='space-between'
-          fontSize='sm'
-          textTransform='uppercase'
+          justifyContent="space-between"
+          fontSize="sm"
+          textTransform="uppercase"
         >
-          <Text fontWeight='semibold'>Price</Text>
-          <Text fontWeight='semibold' color='brand.500 !important'>
+          <Text fontWeight="semibold">Price</Text>
+          <Text fontWeight="semibold" color="brand.500 !important">
             {Intl.NumberFormat('en-US', {
               style: 'currency',
               currency: 'USD',
@@ -113,20 +135,25 @@ const PropertyFilters = (props: { loading; setLoading; setProperties }) => {
           max={filters.listingType === 'rental' ? 5000 : 1000000}
           step={filters.listingType === 'rental' ? 100 : 10000}
           value={[filters.minPrice, filters.maxPrice]}
-          onChange={(val) =>
-            setFilters({ ...filters, minPrice: val[0], maxPrice: val[1] })
-          }
+          onChange={(val) => {
+            dispatch(
+              setFilter({ filter: FiltersEnum.MIN_PRICE, value: val[0] })
+            );
+            dispatch(
+              setFilter({ filter: FiltersEnum.MAX_PRICE, value: val[1] })
+            );
+          }}
         >
-          <RangeSliderTrack bg='brand.100'>
-            <RangeSliderFilledTrack bg='brand.500' />
+          <RangeSliderTrack bg="brand.100">
+            <RangeSliderFilledTrack bg="brand.500" />
           </RangeSliderTrack>
-          <RangeSliderThumb index={0} bg='brand.500' />
-          <RangeSliderThumb index={1} bg='brand.500' />
+          <RangeSliderThumb index={0} bg="brand.500" />
+          <RangeSliderThumb index={1} bg="brand.500" />
         </RangeSlider>
       </Box>
       <>
         {filters.propertyType === 'residentialProperty' && (
-          <ResidentialFilters filters={filters} setFilters={setFilters} />
+          <ResidentialFilters />
         )}
       </>
     </Stack>
