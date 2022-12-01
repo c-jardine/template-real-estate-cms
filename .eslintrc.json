@@ -1,7 +1,19 @@
 {
-  "extends": "next",
-  "plugins": [],
+  "extends": [
+    "next",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint/eslint-plugin", "eslint-plugin-tsdoc"],
   "rules": {
-    "semi": "error"
+    "semi": "error",
+    "tsdoc/syntax": "warn",
+    "no-sparse-arrays": "off"
   }
 }

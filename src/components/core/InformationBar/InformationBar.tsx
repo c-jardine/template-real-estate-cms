@@ -25,7 +25,7 @@ const SocialButton = ({
 }) => {
   return (
     <chakra.button
-      bg='socialBackground'
+      bg="socialBackground"
       rounded={'full'}
       p={2}
       w={8}
@@ -40,7 +40,7 @@ const SocialButton = ({
       _hover={{
         bg: 'brand.500',
       }}
-      color='white'
+      color="white"
     >
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
@@ -50,35 +50,35 @@ const SocialButton = ({
 
 const InformationBar = () => {
   return (
-    <Box bg='chalkboard' py={2}>
+    <Box bg="chalkboard" py={2}>
       <Flex
-        mx='auto'
-        maxW='8xl'
-        w='full'
+        mx="auto"
+        maxW="8xl"
+        w="full"
         justifyContent={{ base: 'center', md: 'space-between' }}
       >
-        <Stack direction='row' gap={8}>
-          <Flex gap={2} alignItems='center'>
-            <Icon as={FaPhone} w={3} h={3} color='brand.500' />
+        <Stack direction="row" gap={8}>
+          <Flex gap={2} alignItems="center">
+            <Icon as={FaPhone} w={3} h={3} color="brand.500" />
             <Link
-              color='white'
-              fontSize='xs'
+              color="white"
+              fontSize="xs"
               letterSpacing={1}
-              textTransform='uppercase'
-              transition='200ms ease-in-out'
+              textTransform="uppercase"
+              transition="200ms ease-in-out"
               _hover={{ color: 'brand.500' }}
             >
               (419) 555-5555
             </Link>
           </Flex>
-          <Flex gap={2} alignItems='center'>
-            <Icon as={FaEnvelope} w={3} h={3} color='brand.500' />
+          <Flex gap={2} alignItems="center">
+            <Icon as={FaEnvelope} w={3} h={3} color="brand.500" />
             <Link
-              color='white'
-              fontSize='xs'
+              color="white"
+              fontSize="xs"
               letterSpacing={1}
-              textTransform='uppercase'
-              transition='200ms ease-in-out'
+              textTransform="uppercase"
+              transition="200ms ease-in-out"
               _hover={{ color: 'brand.500' }}
             >
               lorem@ipsum.com

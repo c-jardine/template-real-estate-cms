@@ -4,62 +4,62 @@ const NavigationColumn = () => {
   return (
     <Stack>
       <Text
-        color='headerText !important'
-        fontSize='xl'
-        fontWeight='bold'
-        textTransform='uppercase'
+        color="headerText !important"
+        fontSize="xl"
+        fontWeight="bold"
+        textTransform="uppercase"
       >
         Navigation
       </Text>
       <Stack spacing={4}>
         <Link
-          href='/home'
-          letterSpacing='wide'
+          href="/home"
+          letterSpacing="wide"
           lineHeight={1}
-          fontSize='sm'
-          textTransform='uppercase'
-          color='bodyText'
-          fontWeight='light'
-          transition='200ms ease-in-out'
+          fontSize="sm"
+          textTransform="uppercase"
+          color="bodyText"
+          fontWeight="light"
+          transition="200ms ease-in-out"
           _hover={{ color: 'brand.500' }}
         >
           Home
         </Link>
         <Link
-          href='/about'
-          letterSpacing='wide'
+          href="/about"
+          letterSpacing="wide"
           lineHeight={1}
-          fontSize='sm'
-          textTransform='uppercase'
-          color='bodyText'
-          fontWeight='light'
-          transition='200ms ease-in-out'
+          fontSize="sm"
+          textTransform="uppercase"
+          color="bodyText"
+          fontWeight="light"
+          transition="200ms ease-in-out"
           _hover={{ color: 'brand.500' }}
         >
           About
         </Link>
         <Link
-          href='/faq'
-          letterSpacing='wide'
+          href="/faq"
+          letterSpacing="wide"
           lineHeight={1}
-          fontSize='sm'
-          textTransform='uppercase'
-          color='bodyText'
-          fontWeight='light'
-          transition='200ms ease-in-out'
+          fontSize="sm"
+          textTransform="uppercase"
+          color="bodyText"
+          fontWeight="light"
+          transition="200ms ease-in-out"
           _hover={{ color: 'brand.500' }}
         >
           FAQ
         </Link>
         <Link
-          href='/contact'
-          letterSpacing='wide'
+          href="/contact"
+          letterSpacing="wide"
           lineHeight={1}
-          fontSize='sm'
-          textTransform='uppercase'
-          color='bodyText'
-          fontWeight='light'
-          transition='200ms ease-in-out'
+          fontSize="sm"
+          textTransform="uppercase"
+          color="bodyText"
+          fontWeight="light"
+          transition="200ms ease-in-out"
           _hover={{ color: 'brand.500' }}
         >
           Contact

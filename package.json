@@ -4,7 +4,7 @@
     "build": "next build",
     "dev": "next",
     "format": "npx prettier --write . --ignore-path .gitignore",
-    "lint": "next lint -- --ignore-path .gitignore",
+    "lint": "npx eslint . \"src/**/*.{ts,tsx}\"",
     "lint:fix": "npm run format && npm run lint -- --fix",
     "start": "next start",
     "type-check": "tsc --noEmit",
@@ -20,6 +20,7 @@
     "@emotion/styled": "^11.10.5",
     "@next/font": "^13.0.5",
     "@portabletext/react": "^2.0.0",
+    "@portabletext/types": "^2.0.0",
     "@react-google-maps/api": "^2.17.0",
     "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.1",
@@ -48,9 +49,12 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^13.0.3",
     "@types/react": "^18.0.25",
-    "eslint": "^8.27.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
     "eslint-config-next": "^13.0.2",
+    "eslint-plugin-tsdoc": "^0.2.17",
     "prettier": "^2.7.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   }
 }

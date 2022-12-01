@@ -1,6 +1,7 @@
 import {
   Box,
   Container,
+  Divider,
   Flex,
   Icon,
   Image,
@@ -27,6 +28,7 @@ import {
   RealtorCardSocialLinkProps,
 } from '../../src/components';
 import { RealtorPageProps } from '../../src/types';
+import { generatePalette } from '../../lib/helpers/colors';
 
 const SocialLink = (props: RealtorCardSocialLinkProps) => {
   return (
@@ -46,73 +48,76 @@ const SocialLink = (props: RealtorCardSocialLinkProps) => {
 
 const AgentPage: NextPage = (props: RealtorPageProps) => {
   return (
-    <Container maxW="8xl" w="full" mx="auto">
-      <Stack spacing={16}>
-        <SimpleGrid
-          columns={{ base: 1, md: 4 }}
-          gap={8}
-          maxW="4xl"
-          w="full"
-          mx="auto"
-        >
-          <Flex flexDirection="column" alignItems="center">
-            <Box maxW={64} w="full" h="full">
-              <Image
-                src={urlFor(props.realtor.image).url()}
-                alt=""
-                objectFit="contain"
-                w="full"
-                h="full"
-              />
-            </Box>
-          </Flex>
-          <Stack gridColumn={{ base: '1', md: '2 / span 3' }} spacing={4}>
-            <Header
-              title={props.realtor.name}
-              subtitle={`${props.realtor.contactInfo.phone.replace(
-                /^(\d{3})(\d{3})(\d{4}).*/,
-                '($1) $2-$3'
-              )} | ${props.realtor.contactInfo.email}`}
+    <>
+      <SimpleGrid
+        columns={{ base: 1, md: 4 }}
+        gap={8}
+        px={{ base: 4 }}
+        maxW="4xl"
+        w="full"
+        mx="auto"
+        mt={16}
+      >
+        <Flex flexDirection="column" alignItems="center">
+          <Flex maxW={64} w="full" h="full" alignItems="flex-end">
+            <Image
+              src={urlFor(props.realtor.image).url()}
+              alt=""
+              objectFit="contain"
             />
-            <Text lineHeight={1.5}>{props.realtor.bio}</Text>
-            <Flex gap={4}>
-              <SocialLink
-                href={props.realtor.contactInfo.socialMedia?.linkedin}
-                icon={FaLinkedinIn}
-                ariaLabel="LinkedIn link"
-              />
-              <SocialLink
-                href={props.realtor.contactInfo.socialMedia?.facebook}
-                icon={FaFacebook}
-                ariaLabel="Facebook link"
-              />
-              <SocialLink
-                href={props.realtor.contactInfo.socialMedia?.twitter}
-                icon={FaTwitter}
-                ariaLabel="Twitter link"
-              />
-              <SocialLink
-                href={props.realtor.contactInfo.socialMedia?.instagram}
-                icon={FaInstagram}
-                ariaLabel="Instagram link"
-              />
-            </Flex>
-          </Stack>
-        </SimpleGrid>
-
-        <Header
-          title="Residential Properties"
-          subtitle={`Homes and apartments listed by ${props.realtor.name}`}
-        />
-        <SimpleGrid columns={{ base: 1, lg: 2, '2xl': 4 }} gap={4}>
-          {props.properties.map((property, index) => (
-            <Box key={index}>
-              <PropertyCard {...property} />
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Stack>
-    </Container>
+          </Flex>
+          <Divider display={{ base: 'block', md: 'none' }} />
+        </Flex>
+        <Stack gridColumn={{ base: '1', md: '2 / span 3' }} spacing={4}>
+          <Header
+            title={props.realtor.name}
+            subtitle={`${props.realtor.contactInfo.phone.replace(
+              /^(\d{3})(\d{3})(\d{4}).*/,
+              '($1) $2-$3'
+            )} | ${props.realtor.contactInfo.email}`}
+          />
+          <Text lineHeight={1.5}>{props.realtor.bio}</Text>
+          <Flex gap={4}>
+            <SocialLink
+              href={props.realtor.contactInfo.socialMedia?.linkedin}
+              icon={FaLinkedinIn}
+              ariaLabel="LinkedIn link"
+            />
+            <SocialLink
+              href={props.realtor.contactInfo.socialMedia?.facebook}
+              icon={FaFacebook}
+              ariaLabel="Facebook link"
+            />
+            <SocialLink
+              href={props.realtor.contactInfo.socialMedia?.twitter}
+              icon={FaTwitter}
+              ariaLabel="Twitter link"
+            />
+            <SocialLink
+              href={props.realtor.contactInfo.socialMedia?.instagram}
+              icon={FaInstagram}
+              ariaLabel="Instagram link"
+            />
+          </Flex>
+        </Stack>
+      </SimpleGrid>
+      <Divider display={{ base: 'none', md: 'block' }} />
+      <Container maxW="8xl" w="full" mx="auto" my={16}>
+        <Stack spacing={16}>
+          <Header
+            title="Residential Properties"
+            subtitle={`Homes and apartments listed by ${props.realtor.name}`}
+          />
+          <SimpleGrid columns={{ base: 1, lg: 2, '2xl': 4 }} gap={4}>
+            {props.properties.map((property, index) => (
+              <Box key={index}>
+                <PropertyCard {...property} />
+              </Box>
+            ))}
+          </SimpleGrid>
+        </Stack>
+      </Container>
+    </>
   );
 };
 

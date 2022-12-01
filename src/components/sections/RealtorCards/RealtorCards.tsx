@@ -10,15 +10,15 @@ const RealtorCards = () => {
   if (error) return <Text>Failed</Text>;
 
   return (
-    <Box maxW='8xl' mx='auto' px={{ base: 4, '2xl': 0 }}>
+    <Box maxW="8xl" mx="auto" px={{ base: 4, '2xl': 0 }}>
       <Header
         center
-        title='Our Agents'
-        subtitle='Meet our professional, licensed team'
+        title="Our Agents"
+        subtitle="Meet our professional, licensed team"
       />
       {!realtors ? (
-        <Flex justifyContent='center' alignItems='center' h={64}>
-          <Spinner color='brand.500' />
+        <Flex justifyContent="center" alignItems="center" h={64}>
+          <Spinner color="brand.500" />
         </Flex>
       ) : (
         <SimpleGrid columns={{ base: 1, md: 2, xl: 4 }} mt={16} gap={16}>

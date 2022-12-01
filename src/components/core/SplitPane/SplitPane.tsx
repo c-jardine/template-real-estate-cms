@@ -17,8 +17,8 @@ const RightPane = (props: { children: React.ReactNode; flip?: boolean }) => {
     <Box
       gridRow={1}
       gridColumn={!props.flip ? 1 : { base: 1, xl: 2 }}
-      w='full'
-      alignSelf='center'
+      w="full"
+      alignSelf="center"
     >
       {props.children}
     </Box>
@@ -27,7 +27,7 @@ const RightPane = (props: { children: React.ReactNode; flip?: boolean }) => {
 
 const SplitPane = (props: { children: React.ReactNode }) => {
   return (
-    <SimpleGrid columns={{ base: 1, xl: 2 }} gap={16} alignItems='center'>
+    <SimpleGrid columns={{ base: 1, xl: 2 }} gap={16} alignItems="center">
       {props.children}
     </SimpleGrid>
   );

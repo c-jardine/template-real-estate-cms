@@ -15,13 +15,13 @@ const ResidentialPropertyFeaturesTab = (props: PropertyProps) => {
   return (
     <TabPanel p={0}>
       <TableContainer>
-        <Table variant='simple'>
-          <Thead bg='chalkboard' color='white'>
+        <Table variant="simple">
+          <Thead bg="chalkboard" color="white">
             <Tr
-              fontSize='sm'
-              textTransform='uppercase'
-              fontWeight='bold'
-              letterSpacing='wide'
+              fontSize="sm"
+              textTransform="uppercase"
+              fontWeight="bold"
+              letterSpacing="wide"
             >
               <Td>Feature</Td>
               <Td>Description</Td>
@@ -42,12 +42,12 @@ const ResidentialPropertyFeaturesTab = (props: PropertyProps) => {
             </Tr>
             <Tr>
               <Td>Bathrooms</Td>
-              <Td display='flex' gap={2} alignItems='center'>
+              <Td display="flex" gap={2} alignItems="center">
                 <chakra.span lineHeight={1}>
                   {props.features.bathrooms.full}{' '}
                   <chakra.span>full</chakra.span>
                 </chakra.span>
-                <chakra.span fontWeight='semibold' fontSize='lg'>
+                <chakra.span fontWeight="semibold" fontSize="lg">
                   |
                 </chakra.span>
                 <chakra.span lineHeight={1}>
@@ -77,13 +77,13 @@ const ResidentialPropertyFeaturesTab = (props: PropertyProps) => {
       </TableContainer>
 
       <TableContainer>
-        <Table variant='simple'>
-          <Thead bg='chalkboard' color='white'>
+        <Table variant="simple">
+          <Thead bg="chalkboard" color="white">
             <Tr
-              fontSize='sm'
-              textTransform='uppercase'
-              fontWeight='bold'
-              letterSpacing='wide'
+              fontSize="sm"
+              textTransform="uppercase"
+              fontWeight="bold"
+              letterSpacing="wide"
             >
               <Td>Utility</Td>
               <Td>Type</Td>

@@ -3,5 +3,5 @@ export interface HeaderProps {
   title: string;
   description?: string;
   center?: boolean;
-  light?: boolean
+  light?: boolean;
 }

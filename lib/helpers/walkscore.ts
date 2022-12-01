@@ -1,25 +1,35 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import {
   AddressProps,
+  GeocodingCoordinatesProps,
   GeocodingRequestOptionsProps,
   WalkScoreRequestOptionsProps,
   WalkScoreResponseProps,
 } from '../../src/types';
 
-// Load env vars
-const RAPID_API_KEY = process.env.NEXT_PUBLIC_RAPID_API_KEY as string;
-const GEOCODING_URL = process.env.NEXT_PUBLIC_GEOCODING_URL as string;
-const GEOCODING_HOST = process.env.NEXT_PUBLIC_GEOCODING_HOST as string;
-const WALKSCORE_URL = process.env.NEXT_PUBLIC_WALKSCORE_URL as string;
-const WALKSCORE_HOST = process.env.NEXT_PUBLIC_WALKSCORE_HOST as string;
-const WALKSCORE_API_KEY = process.env.NEXT_PUBLIC_WALKSCORE_API_KEY as string;
+const RAPID_API_KEY = process.env.NEXT_PUBLIC_RAPID_API_KEY;
+const GEOCODING_URL = process.env.NEXT_PUBLIC_GEOCODING_URL;
+const GEOCODING_HOST = process.env.NEXT_PUBLIC_GEOCODING_HOST;
+const WALK_SCORE_URL = process.env.NEXT_PUBLIC_WALK_SCORE_URL;
+const WALK_SCORE_HOST = process.env.NEXT_PUBLIC_WALK_SCORE_HOST;
+const WALK_SCORE_API_KEY = process.env.NEXT_PUBLIC_WALK_SCORE_API_KEY;
 
 /**
- * The request parameters required to make call to the Google Geocoding API.
- * @param address The address whose coordinates are being searched for.
- * @returns The request parameters as an object.
+ * Helper that formats an address object into a string.
+ * @param address - The address object to be formatted.
+ * @returns The string representation of the address object.
  */
-const geocodingParams = (
+const _inlineAddress = (address: AddressProps) => {
+  return `${address.street}, ${address.city}, ${address.state} ${address.zip}`;
+};
+
+/**
+ * Helper to get the request options required by the Google Geocoding API.
+ * @param address - The string-formatted address to be sent to the API.
+ * @returns An Axios-style config object containing relevant options for the
+ * API.
+ */
+const _getGeocodingOptions = (
   address: string
 ): AxiosRequestConfig<GeocodingRequestOptionsProps> => {
   return {
@@ -34,58 +44,81 @@ const geocodingParams = (
 };
 
 /**
- * The request parameters required to make call to the Walk Score API.
- * @param address The address to find walk scores for. This is the address
- * at the coordinates provided in the coordinates parameter.
- * @param coordinates The coordinates to find walk scores for. These are the
- * coordinates provided in the address parameter.
- * @returns The request parameters as an object.
+ * Helper to get the request options required by the Walk Score API.
+ * @param address - The string-formatted address to be sent to the API.
+ * @param coordinates - The coordinates to be sent to the API.
+ * @returns An Axios-style config object containing relevant options for the
+ * API.
  */
-const walkscoreParams = (
+const _getWalkScoreOptions = (
   address: string,
-  coordinates: { lat: number; lng: number }
+  coordinates: GeocodingCoordinatesProps
 ): AxiosRequestConfig<WalkScoreRequestOptionsProps> => {
   return {
     method: 'GET',
-    url: WALKSCORE_URL,
+    url: WALK_SCORE_URL,
     params: {
-      lat: coordinates.lat,
       address: address,
-      wsapikey: WALKSCORE_API_KEY,
+      lat: coordinates.lat,
       lon: coordinates.lng,
+      wsapikey: WALK_SCORE_API_KEY,
       bike: 1,
       transit: 1,
       format: 'json', // API defaults to XML
     },
     headers: {
       'X-RapidAPI-Key': RAPID_API_KEY,
-      'X-RapidAPI-Host': WALKSCORE_HOST,
+      'X-RapidAPI-Host': WALK_SCORE_HOST,
     },
   };
 };
 
 /**
- * The main function to retrieve the walk score. Internally, it calls both the
- * Google Geocoding API and the Walk Score API.
- * @param addressData The address to find the walk scores for.
- * @returns {Promise<WalkScoreResponseProps>} The response from the Walk Score
- * API.
+ * Helper to get the coordinates for the provided address via the Google
+ * Geocoding API.
+ * @param address - The string-formatted address to be sent to the API.
+ * @returns The coordinates for the provided address.
  */
-const getWalkScore = async (
-  addressData: AddressProps
-): Promise<WalkScoreResponseProps> => {
-  // Format the address to be sent to APIs.
-  const address = `${addressData.street}, ${addressData.city}, ${addressData.state} ${addressData.zip}`;
-
-  // Get coordinates from Google Geocoding API.
-  const coordsRes = await axios.request(geocodingParams(address));
-  const coordsData = await coordsRes.data;
-  const coords = coordsData.results[0]?.geometry.location;
-
-  // Get Walk Score from Walk Score API.
-  const walkscoreRes = await axios.request(walkscoreParams(address, coords));
-  const walkscoreData = await walkscoreRes.data;
-  return walkscoreData;
+const _getGeocodingCoordinates = async (
+  address: string
+): Promise<GeocodingCoordinatesProps> => {
+  const res = await axios.request(_getGeocodingOptions(address));
+  const data = await res.data;
+  return data.results[0]?.geometry.location;
 };
 
-export default getWalkScore;
+/**
+ * Helper to get the Walk Score for the provided address and coordinates via
+ * the Walk Score API.
+ * @param address - The string-formatted address to be sent to the API.
+ * @param coordinates - The coordinates to be sent to the API.
+ * @returns The Walk Score for the provided address and coordinates.
+ */
+const _getWalkScore = async (
+  address: string,
+  coordinates: GeocodingCoordinatesProps
+): Promise<WalkScoreResponseProps> => {
+  const res = await axios.request(_getWalkScoreOptions(address, coordinates));
+  const data = await res.data;
+  return data;
+};
+
+/**
+ * Get the Walk Score for the provided address via the Walk Score API. It
+ * formats the address object, requests coordinates for the address, and
+ * finally sends the data to the Walk Score API. It seems a bit convoluted,
+ * but the Walk Score API requires both a string representation of an address
+ * in addition to the coordinates for that address.
+ * @param address - The address to be sent to the API.
+ * @returns The Walk Score for the provided address.
+ */
+const requestWalkScore = async (
+  address: AddressProps
+): Promise<WalkScoreResponseProps> => {
+  const _address = _inlineAddress(address);
+  const _coordinates = await _getGeocodingCoordinates(_address);
+  const walkScore = await _getWalkScore(_address, _coordinates);
+  return walkScore;
+};
+
+export default requestWalkScore;

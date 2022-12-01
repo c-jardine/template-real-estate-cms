@@ -2,9 +2,12 @@
  * Interface representing an RGB color in object form.
  */
 export interface RgbColorProps {
+  /** The red parameter. */
   r: number;
-  b: number;
+  /** The green parameter. */
   g: number;
+  /** The blue parameter. */
+  b: number;
 }
 
 /**

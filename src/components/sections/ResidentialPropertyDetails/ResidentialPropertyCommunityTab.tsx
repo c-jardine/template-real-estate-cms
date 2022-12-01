@@ -9,31 +9,30 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import React from 'react';
-import getWalkScore, {
-  WalkScoreProps,
-} from '../../../../lib/helpers/walkscore';
-import { PropertyProps } from '../../../types';
+import requestWalkScore from '../../../../lib/helpers/walkscore';
+import { PropertyProps, WalkScoreResponseProps } from '../../../types';
 
 const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
-  const [walkscore, setWalkscore] = React.useState<WalkScoreProps>(null);
+  const [walkScore, setWalkScore] =
+    React.useState<WalkScoreResponseProps>(null);
 
   React.useEffect(() => {
     (async () => {
-      const res = await getWalkScore(props.listing.address);
-      setWalkscore(res);
+      const res = await requestWalkScore(props.listing.address);
+      setWalkScore(res);
     })();
   }, [props.listing.address]);
 
   return (
     <TabPanel p={0}>
       <TableContainer>
-        <Table variant='simple'>
-          <Thead bg='chalkboard' color='white'>
+        <Table variant="simple">
+          <Thead bg="chalkboard" color="white">
             <Tr
-              fontSize='sm'
-              textTransform='uppercase'
-              fontWeight='bold'
-              letterSpacing='wide'
+              fontSize="sm"
+              textTransform="uppercase"
+              fontWeight="bold"
+              letterSpacing="wide"
             >
               <Td>Nearby</Td>
               <Td>Score</Td>
@@ -44,56 +43,56 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
             <Tr>
               <Td>
                 <Link
-                  href={walkscore?.help_link}
-                  target='_blank'
-                  rel='noreferrer'
+                  href={walkScore?.help_link}
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Walk Score&reg;
                 </Link>
               </Td>
               <Td>
                 <Link
-                  href={walkscore?.help_link}
-                  target='_blank'
-                  rel='noreferrer'
+                  href={walkScore?.help_link}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {walkscore?.walkscore}
+                  {walkScore?.walkscore}
                 </Link>
               </Td>
-              <Td>{walkscore?.description}</Td>
+              <Td>{walkScore?.description}</Td>
             </Tr>
             <Tr>
               <Td>
                 <Link
-                  href={walkscore?.help_link}
-                  target='_blank'
-                  rel='noreferrer'
+                  href={walkScore?.help_link}
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Bike Score&reg;
                 </Link>
               </Td>
               <Td>
                 <Link
-                  href={walkscore?.help_link}
-                  target='_blank'
-                  rel='noreferrer'
+                  href={walkScore?.help_link}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {walkscore?.bike.score}
+                  {walkScore?.bike.score}
                 </Link>
               </Td>
-              <Td>{walkscore?.bike.description}</Td>
+              <Td>{walkScore?.bike.description}</Td>
             </Tr>
           </Tbody>
         </Table>
       </TableContainer>
       <TableContainer>
-        <Table variant='simple'>
-          <Thead bg='chalkboard' color='white'>
+        <Table variant="simple">
+          <Thead bg="chalkboard" color="white">
             <Tr
-              fontSize='sm'
-              textTransform='uppercase'
-              fontWeight='bold'
-              letterSpacing='wide'
+              fontSize="sm"
+              textTransform="uppercase"
+              fontWeight="bold"
+              letterSpacing="wide"
             >
               <Td>Grade Level</Td>
               <Td>School Name</Td>

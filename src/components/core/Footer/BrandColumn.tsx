@@ -17,7 +17,7 @@ const SocialButton = ({
 }) => {
   return (
     <chakra.button
-      bg='socialBackground'
+      bg="socialBackground"
       rounded={'full'}
       w={8}
       h={8}
@@ -31,7 +31,7 @@ const SocialButton = ({
       _hover={{
         bg: 'brand.500',
       }}
-      color='white'
+      color="white"
     >
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}
@@ -41,16 +41,16 @@ const SocialButton = ({
 
 const BrandColumn = () => {
   return (
-    <Stack justifyContent='space-between' w='full' h='full' py={8} spacing={8}>
+    <Stack justifyContent="space-between" w="full" h="full" py={8} spacing={8}>
       <Flex
-        flexDirection='column'
+        flexDirection="column"
         alignItems={{ base: 'center', lg: 'flex-end' }}
         gap={4}
       >
-        <Flex alignItems='center' gap={4}>
+        <Flex alignItems="center" gap={4}>
           <Image
             src={logo}
-            alt='Logo'
+            alt="Logo"
             style={{
               objectFit: 'contain',
               height: '2rem',
@@ -58,10 +58,10 @@ const BrandColumn = () => {
             }}
           />
           <Text
-            fontSize='xl'
-            letterSpacing='widest'
-            textTransform='uppercase'
-            color='white !important'
+            fontSize="xl"
+            letterSpacing="widest"
+            textTransform="uppercase"
+            color="white !important"
           >
             Logoipsum
           </Text>
@@ -80,12 +80,12 @@ const BrandColumn = () => {
         </Stack>
       </Flex>
       <Text
-        color='subtleText !important'
-        fontWeight='medium'
-        fontSize='sm'
-        w='full'
+        color="subtleText !important"
+        fontWeight="medium"
+        fontSize="sm"
+        w="full"
         textAlign={{ base: 'center', lg: 'right' }}
-        textTransform='uppercase'
+        textTransform="uppercase"
       >
         Developed by Keplux Development
       </Text>

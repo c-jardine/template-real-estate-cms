@@ -77,30 +77,30 @@ const Navbar = () => {
 
   return (
     <Box
-      position='sticky'
+      position="sticky"
       top={0}
       zIndex={50}
-      width='100vw'
+      width="100vw"
       px={4}
-      bg='cardBackground'
+      bg="cardBackground"
       borderBottom={'2px solid'}
-      borderColor='background'
-      shadow='md'
-      textTransform='uppercase'
-      fontSize='sm'
+      borderColor="background"
+      shadow="md"
+      textTransform="uppercase"
+      fontSize="sm"
       letterSpacing={4}
     >
       <Flex
         h={16}
-        justifyContent='space-between'
-        alignItems='center'
-        maxW='8xl'
-        marginX='auto'
+        justifyContent="space-between"
+        alignItems="center"
+        maxW="8xl"
+        marginX="auto"
       >
-        <Flex alignItems='center' gap={4}>
+        <Flex alignItems="center" gap={4}>
           <Image
             src={logo}
-            alt='Logo'
+            alt="Logo"
             style={{
               objectFit: 'contain',
               height: '2rem',
@@ -108,20 +108,20 @@ const Navbar = () => {
             }}
           />
           <Text
-            fontSize='xl'
-            letterSpacing='widest'
-            textTransform='uppercase'
-            color='headerText !important'
+            fontSize="xl"
+            letterSpacing="widest"
+            textTransform="uppercase"
+            color="headerText !important"
           >
             Logoipsum
           </Text>
         </Flex>
 
-        <HStack spacing={8} alignItems='center'>
+        <HStack spacing={8} alignItems="center">
           <HStack
-            as='nav'
+            as="nav"
             spacing={6}
-            alignItems='center'
+            alignItems="center"
             display={{ base: 'none', md: 'flex' }}
           >
             {navLinks.map((link, index) => {
@@ -133,17 +133,17 @@ const Navbar = () => {
                     <>
                       <MenuButton
                         py={2}
-                        transition='150ms ease-in-out'
+                        transition="150ms ease-in-out"
                         _hover={{ color: 'brand.500' }}
-                        role='group'
+                        role="group"
                       >
-                        <Flex alignItems='center'>
+                        <Flex alignItems="center">
                           <Text
-                            fontWeight='normal'
-                            lineHeight='inherit'
-                            textTransform='uppercase'
+                            fontWeight="normal"
+                            lineHeight="inherit"
+                            textTransform="uppercase"
                             letterSpacing={4}
-                            transition='150ms ease-in-out'
+                            transition="150ms ease-in-out"
                             _groupHover={{ color: 'brand.500 !important' }}
                           >
                             {link.name}
@@ -153,8 +153,8 @@ const Navbar = () => {
                             h={3}
                             w={3}
                             ml={1}
-                            color='subtleText'
-                            transition='all .25s ease-in-out'
+                            color="subtleText"
+                            transition="all .25s ease-in-out"
                             transform={isOpen ? 'rotate(180deg)' : ''}
                             _groupHover={{ color: 'brand.500' }}
                           />
@@ -162,23 +162,23 @@ const Navbar = () => {
                       </MenuButton>
                       <MenuList
                         zIndex={5}
-                        border='none'
-                        shadow='lg'
+                        border="none"
+                        shadow="lg"
                         px={8}
                         py={4}
-                        overflow='hidden'
+                        overflow="hidden"
                       >
                         <>
                           <SimpleGrid columns={link.sections.length} gap={28}>
                             {link.sections.map((section, index) => (
                               <Box key={index}>
-                                <chakra.span fontWeight='bold'>
+                                <chakra.span fontWeight="bold">
                                   {section.name}
                                 </chakra.span>
                                 <Box
                                   h={1}
                                   w={28}
-                                  bg='brand.500'
+                                  bg="brand.500"
                                   mt={1}
                                   mb={2}
                                 />
@@ -203,11 +203,11 @@ const Navbar = () => {
           </HStack>
         </HStack>
         <IconButton
-          bg='transparent'
-          color='headerText'
-          size='lg'
+          bg="transparent"
+          color="headerText"
+          size="lg"
           icon={isOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}
-          aria-label='Open Menu'
+          aria-label="Open Menu"
           display={{ base: 'inherit', md: 'none' }}
           onClick={isOpen ? onClose : onOpen}
           _hover={{ bg: 'transparent' }}
@@ -218,28 +218,28 @@ const Navbar = () => {
       {/* Mobile Screen Links */}
       {isOpen ? (
         <Box pb={4} display={{ base: 'inherit', md: 'none' }}>
-          <Stack as='nav' spacing={2}>
+          <Stack as="nav" spacing={2}>
             {navLinks.map((link, index) => {
               return !link.sections ? (
                 <NavLink key={index} {...link} onClose={onClose} />
               ) : (
-                <Accordion allowToggle border='none'>
-                  <AccordionItem border='none'>
-                    <Flex justifyContent='space-between' alignItems='center'>
+                <Accordion allowToggle border="none">
+                  <AccordionItem border="none">
+                    <Flex justifyContent="space-between" alignItems="center">
                       <AccordionButton
                         _hover={{ bg: 'transparent' }}
-                        fontSize='sm'
-                        color='bodyText'
+                        fontSize="sm"
+                        color="bodyText"
                         px={0}
                         py={2}
-                        textTransform='uppercase'
+                        textTransform="uppercase"
                         letterSpacing={4}
                       >
                         {link.name}
                       </AccordionButton>
                       <AccordionIcon w={5} h={5} />
                     </Flex>
-                    <AccordionPanel display='flex' flexDirection='column'>
+                    <AccordionPanel display="flex" flexDirection="column">
                       {link.sections
                         .filter((item) => item.name === 'Type')
                         .map((link, index) => {
@@ -272,12 +272,12 @@ const NavLink = ({ name, path, onClose }: NavLinkProps) => {
     <Link
       href={path}
       py={2}
-      lineHeight='inherit'
+      lineHeight="inherit"
       color={router.pathname === path ? 'brand.500' : 'bodyText'}
       _hover={{
         color: 'brand.500',
       }}
-      transition='150ms ease-in-out'
+      transition="150ms ease-in-out"
       onClick={() => onClose()}
     >
       {name}
@@ -294,7 +294,7 @@ interface MenuLinkProps {
 
 const MenuLink = ({ name, path, onClose }: MenuLinkProps) => {
   return (
-    <Link href={path} onClick={() => onClose()} role='group'>
+    <Link href={path} onClick={() => onClose()} role="group">
       <MenuItem
         p={0}
         _groupHover={{
@@ -302,9 +302,9 @@ const MenuLink = ({ name, path, onClose }: MenuLinkProps) => {
         }}
       >
         <Text
-          textTransform='uppercase'
+          textTransform="uppercase"
           letterSpacing={2}
-          transition='150ms ease-in-out'
+          transition="150ms ease-in-out"
           _groupHover={{ color: 'brand.500 !important' }}
         >
           {name}

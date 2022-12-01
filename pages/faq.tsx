@@ -85,20 +85,20 @@ const FaqPage: NextPage = () => {
 
   return (
     <InnerPageLayout {...props}>
-      <Box maxW='6xl' w='full' mx='auto' pb={16}>
+      <Box maxW="6xl" w="full" mx="auto" pb={16}>
         <Box px={{ base: 4, xl: 0 }}>
           <Header
-            title='Common questions'
-            subtitle='Contact us for additional info'
+            title="Common questions"
+            subtitle="Contact us for additional info"
           />
         </Box>
-        <Accordion mt={16} rounded='xl' allowToggle>
+        <Accordion mt={16} rounded="xl" allowToggle>
           {Questions.map((item) => (
             <AccordionItem
               key={item.id}
-              border='none'
-              borderBottom='1px solid'
-              borderColor='rgba(0,0,0,0.15) !important'
+              border="none"
+              borderBottom="1px solid"
+              borderColor="rgba(0,0,0,0.15) !important"
             >
               <h2>
                 <AccordionButton
@@ -106,18 +106,18 @@ const FaqPage: NextPage = () => {
                   _expanded={{ bg: 'brand.500', color: 'white' }}
                 >
                   <Box
-                    flex='1'
-                    textAlign='left'
-                    fontWeight='semibold'
-                    letterSpacing='wider'
-                    fontSize='lg'
+                    flex="1"
+                    textAlign="left"
+                    fontWeight="semibold"
+                    letterSpacing="wider"
+                    fontSize="lg"
                   >
                     {item.question}
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
-              <AccordionPanel py={8} color='bodyText' letterSpacing='wide'>
+              <AccordionPanel py={8} color="bodyText" letterSpacing="wide">
                 {item.answer}
               </AccordionPanel>
             </AccordionItem>

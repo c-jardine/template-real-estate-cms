@@ -6,14 +6,14 @@ import PropertiesColumn from './PropertiesColumn';
 
 const Footer = () => {
   return (
-    <Box w='100vw' bg='cardBackground'>
-      <Stack mx='auto' spacing={0} justify={'center'} align={'center'}>
-        <SimpleGrid columns={{ base: 1, lg: 3 }} gap={0} w='full'>
+    <Box w="100vw" bg="cardBackground">
+      <Stack mx="auto" spacing={0} justify={'center'} align={'center'}>
+        <SimpleGrid columns={{ base: 1, lg: 3 }} gap={0} w="full">
           <Flex
-            alignItems='center'
-            justifyContent='flex-end'
+            alignItems="center"
+            justifyContent="flex-end"
             px={8}
-            bg='chalkboard'
+            bg="chalkboard"
           >
             <BrandColumn />
           </Flex>
