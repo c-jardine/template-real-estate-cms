@@ -19,7 +19,6 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
   React.useEffect(() => {
     (async () => {
       const res = await requestWalkScore(props.listing.address);
-      console.log(res);
       setWalkScore(res);
     })();
   }, [props.listing.address]);

@@ -137,7 +137,6 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  console.log(generatePalette({ r: 79, g: 70, b: 229 }));
   const realtorData = await client(false).fetch(realtorBySlugQuery, {
     realtorSlug: context.params.slug,
   });
