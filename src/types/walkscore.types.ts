@@ -1,19 +1,39 @@
-export interface WalkScoreProps {
-  bike: { score: number; description: string };
-  description: string;
-  help_link: string;
-  logo_url: string;
-  more_info_icon: string;
-  more_info_link: string;
-  snapped_lat: number;
-  snapped_lon: number;
-  status: number;
-  updated: string;
-  walkscore: number;
-  ws_link: string;
+/**
+ * Representation of the headers required to send requests to the Walk Score
+ * API.
+ */
+interface WalkScoreRequestHeadersProps {
+  'X-RapidAPI-Key': string;
+  'X-RapidAPI-Host': string;
 }
 
 /**
+ * Representation of the parameters required to send requests to the Walk Score
+ * API.
+ */
+interface WalkScoreRequestParamsProps {
+  lat: number;
+  lon: number;
+  address: string;
+  wsapikey: string;
+  bike?: 1;
+  transit?: 1;
+  format?: 'xml' | 'json';
+}
+
+/**
+ * Representation of the required request options to make a successful call to
+ * the Walk Score API.
+ */
+export interface WalkScoreRequestOptionsProps {
+  method: 'GET';
+  url: string;
+  params: WalkScoreRequestParamsProps;
+  headers: WalkScoreRequestHeadersProps;
+}
+
+/**
+ * Representation of the Walk Score API response.
  * More information on the Walk Score API: https://www.walkscore.com/professional/api.php
  */
 export interface WalkScoreResponseProps {

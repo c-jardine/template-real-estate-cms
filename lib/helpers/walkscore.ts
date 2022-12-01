@@ -1,6 +1,12 @@
-import axios from 'axios';
-import { AddressProps, WalkScoreResponseProps } from '../../src/types';
+import axios, { AxiosRequestConfig } from 'axios';
+import {
+  AddressProps,
+  GeocodingRequestOptionsProps,
+  WalkScoreRequestOptionsProps,
+  WalkScoreResponseProps,
+} from '../../src/types';
 
+// Load env vars
 const RAPID_API_KEY = process.env.NEXT_PUBLIC_RAPID_API_KEY as string;
 const GEOCODING_URL = process.env.NEXT_PUBLIC_GEOCODING_URL as string;
 const GEOCODING_HOST = process.env.NEXT_PUBLIC_GEOCODING_HOST as string;
@@ -13,7 +19,9 @@ const WALKSCORE_API_KEY = process.env.NEXT_PUBLIC_WALKSCORE_API_KEY as string;
  * @param address The address whose coordinates are being searched for.
  * @returns The request parameters as an object.
  */
-const geocodingParams = (address: string) => {
+const geocodingParams = (
+  address: string
+): AxiosRequestConfig<GeocodingRequestOptionsProps> => {
   return {
     method: 'GET',
     url: GEOCODING_URL,
@@ -36,7 +44,7 @@ const geocodingParams = (address: string) => {
 const walkscoreParams = (
   address: string,
   coordinates: { lat: number; lng: number }
-) => {
+): AxiosRequestConfig<WalkScoreRequestOptionsProps> => {
   return {
     method: 'GET',
     url: WALKSCORE_URL,
@@ -47,7 +55,7 @@ const walkscoreParams = (
       lon: coordinates.lng,
       bike: 1,
       transit: 1,
-      format: 'json',
+      format: 'json', // API defaults to XML
     },
     headers: {
       'X-RapidAPI-Key': RAPID_API_KEY,
