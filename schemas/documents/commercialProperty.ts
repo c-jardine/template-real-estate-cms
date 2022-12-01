@@ -1,5 +1,5 @@
 import { defineType } from 'sanity';
-import { PropertyProps } from '../../types';
+import { PropertyProps } from '../../src/types';
 
 export default defineType({
   name: 'residentialProperty',
