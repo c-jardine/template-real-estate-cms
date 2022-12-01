@@ -9,18 +9,18 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import React from 'react';
-import getWalkScore, {
-  WalkScoreProps,
-} from '../../../../lib/helpers/walkscore';
-import { PropertyProps } from '../../../types';
+import requestWalkScore from '../../../../lib/helpers/walkscore';
+import { PropertyProps, WalkScoreResponseProps } from '../../../types';
 
 const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
-  const [walkscore, setWalkscore] = React.useState<WalkScoreProps>(null);
+  const [walkScore, setWalkScore] =
+    React.useState<WalkScoreResponseProps>(null);
 
   React.useEffect(() => {
     (async () => {
-      const res = await getWalkScore(props.listing.address);
-      setWalkscore(res);
+      const res = await requestWalkScore(props.listing.address);
+      console.log(res);
+      setWalkScore(res);
     })();
   }, [props.listing.address]);
 
@@ -44,7 +44,7 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
             <Tr>
               <Td>
                 <Link
-                  href={walkscore?.help_link}
+                  href={walkScore?.help_link}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -53,19 +53,19 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
               </Td>
               <Td>
                 <Link
-                  href={walkscore?.help_link}
+                  href={walkScore?.help_link}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {walkscore?.walkscore}
+                  {walkScore?.walkscore}
                 </Link>
               </Td>
-              <Td>{walkscore?.description}</Td>
+              <Td>{walkScore?.description}</Td>
             </Tr>
             <Tr>
               <Td>
                 <Link
-                  href={walkscore?.help_link}
+                  href={walkScore?.help_link}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -74,14 +74,14 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
               </Td>
               <Td>
                 <Link
-                  href={walkscore?.help_link}
+                  href={walkScore?.help_link}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {walkscore?.bike.score}
+                  {walkScore?.bike.score}
                 </Link>
               </Td>
-              <Td>{walkscore?.bike.description}</Td>
+              <Td>{walkScore?.bike.description}</Td>
             </Tr>
           </Tbody>
         </Table>

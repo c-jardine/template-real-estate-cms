@@ -13,8 +13,8 @@ import { RgbColor, RgbColorPalette, RgbColorProps } from '../../src/types';
  * @example
  * ```ts
  * const tintedIndigo = generateTint({ r: 79, g: 70, b: 229 }, 0.7);
- *
- * 'rgb(202, 200, 247)'
+ * console.log(tintedIndigo);
+ * // 'rgb(202, 200, 247)'
  * ```
  */
 export const generateTint = (
@@ -42,8 +42,8 @@ export const generateTint = (
  * @example
  * ```ts
  * const shadedIndigo = generateShade({ r: 79, g: 70, b: 229 }, 0.4);
- *
- * 'rgb(32, 28, 92)'
+ * console.log(shadedIndigo);
+ * // 'rgb(32, 28, 92)'
  * ```
  */
 export const generateShade = (
@@ -67,19 +67,19 @@ export const generateShade = (
  * @example
  * ```ts
  * const indigoPalette = generatePalette({ r: 79, g: 70, b: 229 });
- *
- * {
- *   50: 'rgb(237, 237, 252)',
- *   100: 'rgb(220, 218, 250)',
- *   200: 'rgb(202, 200, 247)',
- *   300: 'rgb(185, 181, 245)',
- *   400: 'rgb(167, 163, 242)',
- *   500: 'rgb(79, 70, 229)',
- *   600: 'rgb(71, 63, 206)',
- *   700: 'rgb(63, 56, 183)',
- *   800: 'rgb(55, 49, 160)',
- *   900: 'rgb(47, 42, 137)'
- * }
+ * console.log(indigoPalette);
+ * // {
+ * //   50: 'rgb(237, 237, 252)',
+ * //   100: 'rgb(220, 218, 250)',
+ * //   200: 'rgb(202, 200, 247)',
+ * //   300: 'rgb(185, 181, 245)',
+ * //   400: 'rgb(167, 163, 242)',
+ * //   500: 'rgb(79, 70, 229)',
+ * //   600: 'rgb(71, 63, 206)',
+ * //   700: 'rgb(63, 56, 183)',
+ * //   800: 'rgb(55, 49, 160)',
+ * //   900: 'rgb(47, 42, 137)'
+ * // }
  * ```
  */
 export const generatePalette = (rgb: RgbColorProps): RgbColorPalette => {

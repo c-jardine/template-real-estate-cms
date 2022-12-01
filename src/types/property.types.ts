@@ -1,5 +1,7 @@
+import { PortableTextBlockComponent } from '@portabletext/react';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { ResidentialPropertyProps } from './residentialProperty.types';
+import React from 'react';
 
 /**
  * Enum containing the available property types.
@@ -15,12 +17,18 @@ export const PropertyTypes = Object.freeze({
  */
 export interface PropertyProps {
   _id: string;
+  /** The {@link PropertyTypes | type of property}. */
   _type: string;
+  /** The {@link ListingProps | details of the listing}. */
   listing: ListingProps;
   includedUtilities: string[];
   buildDate: string;
+  /** The fields contained on {@link PropertyCardPreviewProps | card previews}. */
   cardPreview: PropertyCardPreviewProps;
-  features: ResidentialPropertyProps;
+  /** The property's {@link FeaturesProps | features} based on the
+   * {@link PropertyTypes | property type}. */
+  features: FeaturesProps;
+  /** The {@link CommunityProps | community} features relevant to the property. */
   community: CommunityProps;
 }
 
@@ -28,7 +36,9 @@ export interface PropertyProps {
  * Card preview props for property objects.
  */
 export interface PropertyCardPreviewProps {
+  /** The card preview's heading. */
   title: string;
+  /** A short blurb about the property. */
   summary: string;
 }
 
@@ -36,12 +46,8 @@ export interface PropertyCardPreviewProps {
  * Base listing props for all property types.
  */
 export interface ListingProps {
-  address: {
-    street: string;
-    city: string;
-    state: string;
-    zip: string;
-  };
+  /** The {@link AddressProps | address} of the property. */
+  address: AddressProps;
   for: 'sale' | 'rental' | 'lease';
   gallery: SanityImageSource[];
   price: {
@@ -58,6 +64,12 @@ export interface ListingProps {
     slug: { current: string };
   };
 }
+
+/**
+ * Feature props.
+ * TODO: Add unions to other property type props.
+ */
+type FeaturesProps = ResidentialPropertyProps;
 
 /**
  * Community props.
