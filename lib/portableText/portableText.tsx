@@ -23,7 +23,7 @@ const PortableTextComponents: Partial<PortableTextReactComponents> = {
           target={target}
           rel={target === '_blank' && 'noindex nofollow'}
         >
-          <chakra.span textStyle="link" color="brand.700">
+          <chakra.span fontWeight="semibold" color="brand.500">
             {children}
           </chakra.span>
         </Link>

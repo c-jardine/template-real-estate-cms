@@ -1,66 +1,88 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
+import {
+  AddressProps,
+  GeocodingRequestOptionsProps,
+  WalkScoreRequestOptionsProps,
+  WalkScoreResponseProps,
+} from '../../src/types';
 
-export interface WalkScoreProps {
-  bike: { score: number; description: string };
-  description: string;
-  help_link: string;
-  logo_url: string;
-  more_info_icon: string;
-  more_info_link: string;
-  snapped_lat: number;
-  snapped_lon: number;
-  status: number;
-  updated: string;
-  walkscore: number;
-  ws_link: string;
-}
+// Load env vars
+const RAPID_API_KEY = process.env.NEXT_PUBLIC_RAPID_API_KEY as string;
+const GEOCODING_URL = process.env.NEXT_PUBLIC_GEOCODING_URL as string;
+const GEOCODING_HOST = process.env.NEXT_PUBLIC_GEOCODING_HOST as string;
+const WALKSCORE_URL = process.env.NEXT_PUBLIC_WALKSCORE_URL as string;
+const WALKSCORE_HOST = process.env.NEXT_PUBLIC_WALKSCORE_HOST as string;
+const WALKSCORE_API_KEY = process.env.NEXT_PUBLIC_WALKSCORE_API_KEY as string;
 
-const geocodingParams = (address: string) => {
+/**
+ * The request parameters required to make call to the Google Geocoding API.
+ * @param address The address whose coordinates are being searched for.
+ * @returns The request parameters as an object.
+ */
+const geocodingParams = (
+  address: string
+): AxiosRequestConfig<GeocodingRequestOptionsProps> => {
   return {
     method: 'GET',
-    url: process.env.NEXT_PUBLIC_GEOCODING_URL,
+    url: GEOCODING_URL,
     params: { address, language: 'en' },
     headers: {
-      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-      'X-RapidAPI-Host': process.env.NEXT_PUBLIC_GEOCODING_HOST,
+      'X-RapidAPI-Key': RAPID_API_KEY,
+      'X-RapidAPI-Host': GEOCODING_HOST,
     },
   };
 };
 
+/**
+ * The request parameters required to make call to the Walk Score API.
+ * @param address The address to find walk scores for. This is the address
+ * at the coordinates provided in the coordinates parameter.
+ * @param coordinates The coordinates to find walk scores for. These are the
+ * coordinates provided in the address parameter.
+ * @returns The request parameters as an object.
+ */
 const walkscoreParams = (
   address: string,
   coordinates: { lat: number; lng: number }
-) => {
+): AxiosRequestConfig<WalkScoreRequestOptionsProps> => {
   return {
     method: 'GET',
-    url: 'https://walk-score.p.rapidapi.com/score',
+    url: WALKSCORE_URL,
     params: {
       lat: coordinates.lat,
       address: address,
-      wsapikey: process.env.NEXT_PUBLIC_WALKSCORE_API_KEY,
+      wsapikey: WALKSCORE_API_KEY,
       lon: coordinates.lng,
       bike: 1,
       transit: 1,
-      format: 'json',
+      format: 'json', // API defaults to XML
     },
     headers: {
-      'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-      'X-RapidAPI-Host': process.env.NEXT_PUBLIC_WALKSCORE_HOST,
+      'X-RapidAPI-Key': RAPID_API_KEY,
+      'X-RapidAPI-Host': WALKSCORE_HOST,
     },
   };
 };
 
-const getWalkScore = async (addressData: {
-  street: string;
-  city: string;
-  state: string;
-  zip: string;
-}): Promise<WalkScoreProps> => {
+/**
+ * The main function to retrieve the walk score. Internally, it calls both the
+ * Google Geocoding API and the Walk Score API.
+ * @param addressData The address to find the walk scores for.
+ * @returns {Promise<WalkScoreResponseProps>} The response from the Walk Score
+ * API.
+ */
+const getWalkScore = async (
+  addressData: AddressProps
+): Promise<WalkScoreResponseProps> => {
+  // Format the address to be sent to APIs.
   const address = `${addressData.street}, ${addressData.city}, ${addressData.state} ${addressData.zip}`;
+
+  // Get coordinates from Google Geocoding API.
   const coordsRes = await axios.request(geocodingParams(address));
   const coordsData = await coordsRes.data;
   const coords = coordsData.results[0]?.geometry.location;
 
+  // Get Walk Score from Walk Score API.
   const walkscoreRes = await axios.request(walkscoreParams(address, coords));
   const walkscoreData = await walkscoreRes.data;
   return walkscoreData;

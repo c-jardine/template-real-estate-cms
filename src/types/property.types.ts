@@ -1,29 +1,41 @@
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { ResidentialPropertyProps } from './residentialProperty.types';
 
-export const Property = {
+/**
+ * Enum containing the available property types.
+ */
+export const PropertyTypes = Object.freeze({
   RESIDENTIAL: 'residentialProperty',
-  COMMERCIAL: 'commercial',
-  LAND: 'land',
-};
+  COMMERCIAL: 'commercialProperty',
+  LAND: 'landProperty',
+});
 
+/**
+ * Base property props.
+ */
 export interface PropertyProps {
   _id: string;
   _type: string;
   listing: ListingProps;
   includedUtilities: string[];
   buildDate: string;
-  cardPreview: PropertyCardProps;
+  cardPreview: PropertyCardPreviewProps;
   features: ResidentialPropertyProps;
   community: CommunityProps;
 }
 
-interface PropertyCardProps {
+/**
+ * Card preview props for property objects.
+ */
+export interface PropertyCardPreviewProps {
   title: string;
   summary: string;
 }
 
-interface ListingProps {
+/**
+ * Base listing props for all property types.
+ */
+export interface ListingProps {
   address: {
     street: string;
     city: string;
@@ -47,10 +59,23 @@ interface ListingProps {
   };
 }
 
+/**
+ * Community props.
+ */
 interface CommunityProps {
   nearbySchools: {
     elementary: string;
     middle: string;
     high: string;
   };
+}
+
+/**
+ * Address props.
+ */
+export interface AddressProps {
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
 }

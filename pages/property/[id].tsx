@@ -34,7 +34,7 @@ const PropertyPage: NextPage = (props: PropertyProps) => {
 };
 
 export const getStaticPaths = async () => {
-  const data = await client.fetch(propertyIdsQuery);
+  const data = await client(false).fetch(propertyIdsQuery);
 
   return {
     paths: data.map((property) => {
@@ -49,7 +49,9 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const data = await client.fetch(propertyByIdQuery, { id: context.params.id });
+  const data = await client(false).fetch(propertyByIdQuery, {
+    id: context.params.id,
+  });
 
   return { props: { ...data[0] } };
 };
