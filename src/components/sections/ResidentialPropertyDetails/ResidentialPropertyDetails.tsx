@@ -27,55 +27,55 @@ const ResidentialPropertyDetails = (props: PropertyProps) => {
     <>
       <SimpleGrid
         columns={{ base: 1, sm: 3 }}
-        bg='chalkboard'
+        bg="chalkboard"
         placeItems={{ sm: 'center' }}
         gap={4}
         p={4}
       >
-        <Flex alignItems='center' gap={4}>
+        <Flex alignItems="center" gap={4}>
           <VisuallyHidden>
             {props.listing.size.size} {props.listing.size.unit}
           </VisuallyHidden>
-          <Icon as={FaRulerCombined} w={6} h={6} color='white' />
+          <Icon as={FaRulerCombined} w={6} h={6} color="white" />
           <Text
-            fontSize='sm'
-            color='subtleText !important'
-            fontWeight='semibold'
-            textTransform='uppercase'
+            fontSize="sm"
+            color="subtleText !important"
+            fontWeight="semibold"
+            textTransform="uppercase"
           >
             {Intl.NumberFormat().format(props.listing.size.size)}{' '}
-            <chakra.span color='brand.500' fontSize='xs'>
+            <chakra.span color="brand.500" fontSize="xs">
               {props.listing.size.unit}
             </chakra.span>
           </Text>
         </Flex>
-        <Flex alignItems='center' gap={4}>
+        <Flex alignItems="center" gap={4}>
           <VisuallyHidden>{props.features.bedrooms} bedrooms</VisuallyHidden>
-          <Icon as={FaBed} w={6} h={6} color='white' />
+          <Icon as={FaBed} w={6} h={6} color="white" />
           <Text
-            fontSize='sm'
-            color='subtleText !important'
-            fontWeight='semibold'
-            textTransform='uppercase'
+            fontSize="sm"
+            color="subtleText !important"
+            fontWeight="semibold"
+            textTransform="uppercase"
           >
             {props.features.bedrooms}
           </Text>
         </Flex>
-        <Flex alignItems='center' gap={4}>
+        <Flex alignItems="center" gap={4}>
           <VisuallyHidden>
             {props.features.bathrooms.full} full baths,{' '}
             {props.features.bathrooms.half} half baths
           </VisuallyHidden>
-          <Icon as={FaBath} w={6} h={6} color='white' />
+          <Icon as={FaBath} w={6} h={6} color="white" />
           <Text
             lineHeight={1.5}
-            fontSize='sm'
-            color='subtleText !important'
-            fontWeight='semibold'
-            textTransform='uppercase'
+            fontSize="sm"
+            color="subtleText !important"
+            fontWeight="semibold"
+            textTransform="uppercase"
           >
             {props.features.bathrooms.full} full{' '}
-            <chakra.span fontWeight='black' color='brand.500' fontSize='lg'>
+            <chakra.span fontWeight="black" color="brand.500" fontSize="lg">
               |
             </chakra.span>{' '}
             {props.features.bathrooms.half} half
@@ -85,19 +85,19 @@ const ResidentialPropertyDetails = (props: PropertyProps) => {
 
       <Tabs isFitted isLazy>
         <TabList
-          bg='white'
+          bg="white"
           position={{ base: 'relative', sm: 'sticky' }}
           top={0}
         >
           <Tab _selected={{ bg: 'brand.500', color: 'white' }}>
-            <Flex py={2} gap={2} alignItems='center'>
+            <Flex py={2} gap={2} alignItems="center">
               <Icon as={FaEye} />
               <chakra.span
                 display={{ base: 'none', sm: 'flex' }}
-                textTransform='uppercase'
-                fontSize='sm'
-                letterSpacing='wider'
-                fontWeight='semibold'
+                textTransform="uppercase"
+                fontSize="sm"
+                letterSpacing="wider"
+                fontWeight="semibold"
               >
                 Overview
               </chakra.span>
@@ -105,14 +105,14 @@ const ResidentialPropertyDetails = (props: PropertyProps) => {
           </Tab>
 
           <Tab _selected={{ bg: 'brand.500', color: 'white' }}>
-            <Flex py={2} gap={2} alignItems='center'>
+            <Flex py={2} gap={2} alignItems="center">
               <Icon as={FaListUl} />
               <chakra.span
                 display={{ base: 'none', sm: 'flex' }}
-                textTransform='uppercase'
-                fontSize='sm'
-                letterSpacing='wider'
-                fontWeight='semibold'
+                textTransform="uppercase"
+                fontSize="sm"
+                letterSpacing="wider"
+                fontWeight="semibold"
               >
                 Features
               </chakra.span>
@@ -120,14 +120,14 @@ const ResidentialPropertyDetails = (props: PropertyProps) => {
           </Tab>
 
           <Tab _selected={{ bg: 'brand.500', color: 'white' }}>
-            <Flex py={2} gap={2} alignItems='center'>
+            <Flex py={2} gap={2} alignItems="center">
               <Icon as={FaCity} w={5} h={5} />
               <chakra.span
                 display={{ base: 'none', sm: 'flex' }}
-                textTransform='uppercase'
-                fontSize='sm'
-                letterSpacing='wider'
-                fontWeight='semibold'
+                textTransform="uppercase"
+                fontSize="sm"
+                letterSpacing="wider"
+                fontWeight="semibold"
               >
                 Community
               </chakra.span>

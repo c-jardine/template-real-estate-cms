@@ -27,13 +27,13 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
   return (
     <TabPanel p={0}>
       <TableContainer>
-        <Table variant='simple'>
-          <Thead bg='chalkboard' color='white'>
+        <Table variant="simple">
+          <Thead bg="chalkboard" color="white">
             <Tr
-              fontSize='sm'
-              textTransform='uppercase'
-              fontWeight='bold'
-              letterSpacing='wide'
+              fontSize="sm"
+              textTransform="uppercase"
+              fontWeight="bold"
+              letterSpacing="wide"
             >
               <Td>Nearby</Td>
               <Td>Score</Td>
@@ -45,8 +45,8 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
               <Td>
                 <Link
                   href={walkscore?.help_link}
-                  target='_blank'
-                  rel='noreferrer'
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Walk Score&reg;
                 </Link>
@@ -54,8 +54,8 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
               <Td>
                 <Link
                   href={walkscore?.help_link}
-                  target='_blank'
-                  rel='noreferrer'
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   {walkscore?.walkscore}
                 </Link>
@@ -66,8 +66,8 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
               <Td>
                 <Link
                   href={walkscore?.help_link}
-                  target='_blank'
-                  rel='noreferrer'
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   Bike Score&reg;
                 </Link>
@@ -75,8 +75,8 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
               <Td>
                 <Link
                   href={walkscore?.help_link}
-                  target='_blank'
-                  rel='noreferrer'
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   {walkscore?.bike.score}
                 </Link>
@@ -87,13 +87,13 @@ const ResidentialPropertyCommunityTab = (props: PropertyProps) => {
         </Table>
       </TableContainer>
       <TableContainer>
-        <Table variant='simple'>
-          <Thead bg='chalkboard' color='white'>
+        <Table variant="simple">
+          <Thead bg="chalkboard" color="white">
             <Tr
-              fontSize='sm'
-              textTransform='uppercase'
-              fontWeight='bold'
-              letterSpacing='wide'
+              fontSize="sm"
+              textTransform="uppercase"
+              fontWeight="bold"
+              letterSpacing="wide"
             >
               <Td>Grade Level</Td>
               <Td>School Name</Td>

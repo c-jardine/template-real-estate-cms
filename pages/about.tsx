@@ -15,33 +15,33 @@ const About: NextPage = () => {
   return (
     <InnerPageLayout {...props}>
       <Stack
-        position='relative'
+        position="relative"
         zIndex={1}
-        w='100vw'
+        w="100vw"
         style={{ WebkitTransform: 'translate3d(0,0,0)' }}
         spacing={28}
-        alignItems='center'
+        alignItems="center"
         px={{ base: 4, xl: 0 }}
         pb={16}
       >
         <RealtorSplit />
 
-        <Box mx='auto' maxW='4xl' w='full' h='lg'>
+        <Box mx="auto" maxW="4xl" w="full" h="lg">
           <Image
-            src='https://images.unsplash.com/photo-1547866751-446296f133ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746&q=80'
-            alt=''
-            objectFit='cover'
-            w='full'
-            h='full'
+            src="https://images.unsplash.com/photo-1547866751-446296f133ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746&q=80"
+            alt=""
+            objectFit="cover"
+            w="full"
+            h="full"
           />
         </Box>
         <SimpleGrid
           columns={{ base: 1, xl: 3 }}
-          mx='auto'
-          maxW='7xl'
+          mx="auto"
+          maxW="7xl"
           px={{ base: 4, xl: 0 }}
         >
-          <chakra.h3 color='headerText' fontSize='4xl'>
+          <chakra.h3 color="headerText" fontSize="4xl">
             Who we are
           </chakra.h3>
           <Stack gridColumn={{ base: 1, xl: '2 / span 2' }}>

@@ -1,25 +1,10 @@
-import { Box, SimpleGrid, useDisclosure } from '@chakra-ui/react';
+import { Box, SimpleGrid } from '@chakra-ui/react';
 import { NextPage } from 'next';
-import React from 'react';
 import { client, propertyByIdQuery, propertyIdsQuery } from '../../lib/sanity';
 import { Carousel, PropertyPageDetails } from '../../src/components';
 import { PropertyProps } from '../../src/types';
 
 const PropertyPage: NextPage = (props: PropertyProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const [imgSrc, setImgSrc] = React.useState<string>(null);
-
-  const handleOnOpen = (imgSrc: string) => {
-    setImgSrc(imgSrc);
-    onOpen();
-  };
-
-  const handleOnClose = () => {
-    setImgSrc(null);
-    onClose();
-  };
-
   return (
     <Box>
       <SimpleGrid columns={{ base: 1, xl: 2 }}>

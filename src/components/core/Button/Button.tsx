@@ -1,10 +1,4 @@
-import {
-  Box,
-  BoxProps,
-  chakra,
-  Flex,
-  Link,
-} from '@chakra-ui/react';
+import { Box, BoxProps, chakra, Flex, Link } from '@chakra-ui/react';
 import React from 'react';
 
 const Button = (props: {
@@ -20,11 +14,11 @@ const Button = (props: {
       as={Link}
       href={props.href}
       h={12}
-      shadow='md'
+      shadow="md"
       {...props.style}
     >
       <Flex
-        justify='center'
+        justify="center"
         bg={
           (props.variant === 'light' && 'background') ||
           (props.variant === 'dark' && 'brand.500') ||
@@ -32,18 +26,18 @@ const Button = (props: {
         }
         py={4}
         px={4}
-        h='full'
+        h="full"
         lineHeight={1.18}
-        alignItems='center'
-        textTransform='uppercase'
+        alignItems="center"
+        textTransform="uppercase"
         letterSpacing={2}
-        fontSize='sm'
+        fontSize="sm"
         _hover={{
           filter: 'brightness(1.2)',
           bg: props.variant === 'light' && 'brand.300',
         }}
         _active={{ filter: 'brightness(0.9)' }}
-        transition='all 200ms ease-in-out'
+        transition="all 200ms ease-in-out"
       >
         <chakra.span color={props.variant === 'light' ? 'headerText' : 'white'}>
           {props.children}

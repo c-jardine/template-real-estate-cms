@@ -16,49 +16,49 @@ const ContactPage: NextPage = () => {
     <InnerPageLayout {...props}>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
-        w='full'
-        maxW='7xl'
-        mx='auto'
+        w="full"
+        maxW="7xl"
+        mx="auto"
         gap={16}
         mb={16}
       >
         <Box p={4}>
           <chakra.h2
-            textStyle='h2'
-            color='headerText'
+            textStyle="h2"
+            color="headerText"
             mb={16}
-            textAlign='left'
-            fontSize='4xl'
+            textAlign="left"
+            fontSize="4xl"
           >
             Send a message
           </chakra.h2>
           <Stack spacing={8}>
             <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
-              <Input label='First name' autoComplete='given-name' />
-              <Input label='Last name' autoComplete='family-name' />
+              <Input label="First name" autoComplete="given-name" />
+              <Input label="Last name" autoComplete="family-name" />
             </SimpleGrid>
-            <Input label='Phone number' autoComplete='tel' />
-            <Input label='Email' autoComplete='email' />
-            <Textarea label='Message' />
-            <Button ariaLabel='Send the message'>Send</Button>
+            <Input label="Phone number" autoComplete="tel" />
+            <Input label="Email" autoComplete="email" />
+            <Textarea label="Message" />
+            <Button ariaLabel="Send the message">Send</Button>
           </Stack>
         </Box>
         <Box p={4}>
           <chakra.h2
-            textStyle='h2'
-            color='headerText'
+            textStyle="h2"
+            color="headerText"
             mb={16}
-            textAlign='left'
-            fontSize='4xl'
+            textAlign="left"
+            fontSize="4xl"
           >
             Contact info
           </chakra.h2>
           <Stack spacing={8}>
             <Box>
               <chakra.h3
-                fontSize='xl'
-                fontWeight='semibold'
-                color='headerText'
+                fontSize="xl"
+                fontWeight="semibold"
+                color="headerText"
                 letterSpacing={1}
               >
                 Talk to us
@@ -68,9 +68,9 @@ const ContactPage: NextPage = () => {
             </Box>
             <Box>
               <chakra.h3
-                fontSize='xl'
-                fontWeight='semibold'
-                color='headerText'
+                fontSize="xl"
+                fontWeight="semibold"
+                color="headerText"
                 letterSpacing={1}
               >
                 Visit us

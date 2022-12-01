@@ -16,7 +16,7 @@ const WALKSCORE_API_KEY = process.env.NEXT_PUBLIC_WALKSCORE_API_KEY as string;
 
 /**
  * The request parameters required to make call to the Google Geocoding API.
- * @param address The address whose coordinates are being searched for.
+ * @param address - The address whose coordinates are being searched for.
  * @returns The request parameters as an object.
  */
 const geocodingParams = (
@@ -35,9 +35,9 @@ const geocodingParams = (
 
 /**
  * The request parameters required to make call to the Walk Score API.
- * @param address The address to find walk scores for. This is the address
+ * @param address - The address to find walk scores for. This is the address
  * at the coordinates provided in the coordinates parameter.
- * @param coordinates The coordinates to find walk scores for. These are the
+ * @param coordinates - The coordinates to find walk scores for. These are the
  * coordinates provided in the address parameter.
  * @returns The request parameters as an object.
  */
@@ -67,8 +67,8 @@ const walkscoreParams = (
 /**
  * The main function to retrieve the walk score. Internally, it calls both the
  * Google Geocoding API and the Walk Score API.
- * @param addressData The address to find the walk scores for.
- * @returns {Promise<WalkScoreResponseProps>} The response from the Walk Score
+ * @param addressData - The address to find the walk scores for.
+ * @returns The response from the Walk Score
  * API.
  */
 const getWalkScore = async (

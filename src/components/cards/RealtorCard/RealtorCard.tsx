@@ -11,12 +11,12 @@ import {
 
 const SocialLink = (props: RealtorCardSocialLinkProps) => {
   return (
-    <Link as={Flex} role='group'>
+    <Link as={Flex} role="group">
       <Icon
         aria-label={props.ariaLabel}
         as={props.icon}
-        color='white'
-        transition='200ms ease-in-out'
+        color="white"
+        transition="200ms ease-in-out"
         _groupHover={{ color: 'brand.500' }}
       />
     </Link>
@@ -26,24 +26,24 @@ const SocialLink = (props: RealtorCardSocialLinkProps) => {
 const RealtorCard = (props: RealtorCardProps) => {
   return (
     <Box>
-      <Box w='xs' h='xs' overflow='hidden'>
+      <Box w="xs" h="xs" overflow="hidden">
         <Image
           src={urlFor(props.image).url()}
-          alt=''
-          objectFit='contain'
-          w='full'
-          maxH='md'
+          alt=""
+          objectFit="contain"
+          w="full"
+          maxH="md"
         />
       </Box>
-      <Box h={1} w='full' bg='brand.500' mx='auto' shadow='dark-lg' />
+      <Box h={1} w="full" bg="brand.500" mx="auto" shadow="dark-lg" />
       <Box px={8}>
         <Flex
-          w='full'
-          bg='headerText'
+          w="full"
+          bg="headerText"
           p={3}
-          justifyContent='center'
+          justifyContent="center"
           gap={8}
-          roundedBottom='xl'
+          roundedBottom="xl"
         >
           <SocialLink
             ariaLabel={`View ${props.name}'s LinkedIn profile`}
@@ -67,14 +67,14 @@ const RealtorCard = (props: RealtorCardProps) => {
           />
         </Flex>
       </Box>
-      <Box rounded='xl' overflow='hidden'>
+      <Box rounded="xl" overflow="hidden">
         <Text
           mt={2}
-          color='headerText !important'
-          textAlign='center'
-          textTransform='uppercase'
-          letterSpacing='wider'
-          fontWeight='light'
+          color="headerText !important"
+          textAlign="center"
+          textTransform="uppercase"
+          letterSpacing="wider"
+          fontWeight="light"
         >
           {props.name}
         </Text>
