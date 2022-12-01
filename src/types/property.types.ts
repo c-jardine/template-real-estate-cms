@@ -54,3 +54,10 @@ interface CommunityProps {
     high: string;
   };
 }
+
+export interface AddressProps {
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+}
