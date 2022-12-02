@@ -1,8 +1,10 @@
 import { defineType } from 'sanity';
+import { FaUser } from '@react-icons/all-files/fa/FaUser';
 
 export default defineType({
   name: 'realtor',
   title: 'Realtors',
+  icon: FaUser,
   type: 'document',
   fields: [
     {

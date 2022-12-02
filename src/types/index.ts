@@ -1,4 +1,5 @@
 export * from './colors.types';
+export * from './faq.types';
 export * from './geocoding.types';
 export * from './property.types';
 export * from './realtor.types';

@@ -1,4 +1,4 @@
-import { AddressProps } from '../../src/types';
+import { AddressProps } from '../../types';
 
 /**
  * Builds a link to a Google Maps page with the provided address. It works by

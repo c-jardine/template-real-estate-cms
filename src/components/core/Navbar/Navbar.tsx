@@ -97,7 +97,7 @@ const Navbar = () => {
         maxW="8xl"
         marginX="auto"
       >
-        <Flex alignItems="center" gap={4}>
+        <Flex as={Link} href="/" alignItems="center" gap={4}>
           <Image
             src={logo}
             alt="Logo"

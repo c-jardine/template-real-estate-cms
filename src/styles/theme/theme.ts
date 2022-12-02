@@ -1,5 +1,5 @@
 import { extendTheme, ThemeConfig } from '@chakra-ui/react';
-import { generatePalette } from '../../../lib/helpers/colors';
+import { generatePalette } from '../../lib/helpers/colors';
 
 const colors = {
   brand: {

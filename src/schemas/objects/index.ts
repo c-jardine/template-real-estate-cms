@@ -6,6 +6,7 @@ export { default as listingType } from './listing';
 export { default as nearbySchoolsType } from './nearbySchools';
 export { default as priceType } from './price';
 export { default as propertySizeType } from './propertySize';
+export { default as questionType } from './question';
 export { default as residentialPropertyCommunityType } from './residentialPropertyCommunity';
 export { default as residentialPropertyFeaturesType } from './residentialPropertyFeatures';
 export { default as socialLinksType } from './socialLinks';

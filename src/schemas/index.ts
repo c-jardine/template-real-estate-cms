@@ -12,8 +12,12 @@ import residentialPropertyFeaturesType from './objects/residentialPropertyFeatur
 import socialLinksType from './objects/socialLinks';
 
 // Import documents
+import { faqType, settingsType } from './documents';
+import commercialPropertyType from './documents/commercialProperty';
+import landPropertyType from './documents/landProperty';
 import realtorType from './documents/realtor';
 import residentialPropertyType from './documents/residentialProperty';
+import { questionType } from './objects';
 
 const objects = [
   socialLinksType,
@@ -27,8 +31,16 @@ const objects = [
   nearbySchoolsType,
   residentialPropertyFeaturesType,
   residentialPropertyCommunityType,
+  questionType,
 ];
 
-const documents = [realtorType, residentialPropertyType];
+const documents = [
+  realtorType,
+  residentialPropertyType,
+  commercialPropertyType,
+  landPropertyType,
+  settingsType,
+  faqType,
+];
 
 export const schemaTypes = [...objects, ...documents];

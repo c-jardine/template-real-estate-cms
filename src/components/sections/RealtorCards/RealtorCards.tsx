@@ -1,6 +1,6 @@
 import { Box, Flex, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 import useSWR from 'swr';
-import { getRealtorsQuery, sanityFetcherSWR } from '../../../../lib/sanity';
+import { getRealtorsQuery, sanityFetcherSWR } from '../../../lib/sanity';
 import { RealtorCard } from '../../cards';
 import { Header } from '../../core';
 

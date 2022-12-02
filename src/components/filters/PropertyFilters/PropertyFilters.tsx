@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { client, filterPropertiesQuery } from '../../../../lib/sanity';
+import { client, filterPropertiesQuery } from '../../../lib/sanity';
 import { FiltersEnum, setFilter } from '../../../redux/slices/filtersSlice';
 import { RootState } from '../../../redux/store';
 import { ResidentialFilters } from '../ResidentialFilters';

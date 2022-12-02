@@ -3,7 +3,7 @@ import { FaEnvelope } from '@react-icons/all-files/fa/FaEnvelope';
 import { FaFacebook } from '@react-icons/all-files/fa/FaFacebook';
 import { FaLinkedinIn } from '@react-icons/all-files/fa/FaLinkedinIn';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
-import { urlFor } from '../../../../lib/sanity';
+import { urlFor } from '../../../lib/sanity';
 import {
   RealtorCardProps,
   RealtorCardSocialLinkProps,

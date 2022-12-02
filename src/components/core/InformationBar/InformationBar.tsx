@@ -50,7 +50,7 @@ const SocialButton = ({
 
 const InformationBar = () => {
   return (
-    <Box bg="chalkboard" py={2}>
+    <Box bg="chalkboard" p={2}>
       <Flex
         mx="auto"
         maxW="8xl"

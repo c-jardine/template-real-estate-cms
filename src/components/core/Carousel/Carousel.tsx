@@ -4,7 +4,7 @@ import { FaChevronRight } from '@react-icons/all-files/fa/FaChevronRight';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import useEmblaCarousel from 'embla-carousel-react';
 import React from 'react';
-import { urlFor } from '../../../../lib/sanity';
+import { urlFor } from '../../../lib/sanity';
 
 import CarouselThumb from './CarouselThumb';
 

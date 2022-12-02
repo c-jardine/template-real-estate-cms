@@ -11,8 +11,8 @@ import {
 import { FaMapMarkerAlt } from '@react-icons/all-files/fa/FaMapMarkerAlt';
 import { FaTag } from '@react-icons/all-files/fa/FaTag';
 import { FaUser } from '@react-icons/all-files/fa/FaUser';
-import { googleMapsLinkBuilder } from '../../../../lib/helpers';
-import { urlFor } from '../../../../lib/sanity';
+import { googleMapsLinkBuilder } from '../../../lib/helpers';
+import { urlFor } from '../../../lib/sanity';
 import { PropertyProps, PropertyTypes } from '../../../types';
 import ResidentialPropertyCardBanner from './propertyTypes/ResidentialPropertyCardDetails';
 
