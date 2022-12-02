@@ -83,7 +83,7 @@ export default defineType({
     select: {
       title: 'cardPreview.title',
       subtitle: 'listing.realtor.name',
-      media: 'listing.gallery[0].asset',
+      media: 'listing.gallery.0',
     },
   },
 });

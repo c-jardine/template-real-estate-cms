@@ -8,7 +8,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   return (
     <AppWrapper>
-      {router.asPath !== '/studio' ? (
+      {!router.asPath.startsWith('/studio') ? (
         <>
           <InformationBar />
           <Navbar />

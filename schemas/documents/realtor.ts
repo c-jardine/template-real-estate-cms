@@ -44,4 +44,11 @@ export default defineType({
       type: 'contactInfo',
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'contactInfo.email',
+      media: 'image',
+    },
+  },
 });
