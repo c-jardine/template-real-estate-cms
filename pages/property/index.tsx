@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import React from 'react';
-import { client, filterPropertiesQuery } from '../../lib/sanity';
+import { client, filterPropertiesQuery } from '../../src/lib/sanity';
 import { Header, PropertyCard } from '../../src/components';
 import { PropertyFilters } from '../../src/components/filters';
 import { initialFilters } from '../../src/redux/slices/filtersSlice';

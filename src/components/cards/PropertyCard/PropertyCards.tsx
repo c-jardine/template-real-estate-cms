@@ -9,8 +9,8 @@ import {
 } from '@chakra-ui/react';
 import { BsArrowRight } from '@react-icons/all-files/bs/BsArrowRight';
 import useSWR from 'swr';
-import { sanityFetcherSWR } from '../../../../lib/sanity';
-import { allPropertiesQuery } from '../../../../lib/sanity/queries';
+import { sanityFetcherSWR } from '../../../lib/sanity';
+import { allPropertiesQuery } from '../../../lib/sanity/queries';
 import { Header } from '../../core/Header';
 import PropertyCard from './PropertyCard';
 

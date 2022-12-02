@@ -1,6 +1,6 @@
 import { Box, SimpleGrid } from '@chakra-ui/react';
 import { NextPage } from 'next';
-import { client, propertyByIdQuery, propertyIdsQuery } from '../../lib/sanity';
+import { client, propertyByIdQuery, propertyIdsQuery } from '../../src/lib/sanity';
 import { Carousel, PropertyPageDetails } from '../../src/components';
 import { PropertyProps } from '../../src/types';
 

@@ -1,4 +1,4 @@
-import { RgbColor, RgbColorPalette, RgbColorProps } from '../../src/types';
+import { RgbColor, RgbColorPalette, RgbColorProps } from '../../types';
 
 /**
  * Generate a tint of the provided RGB color and tint factor. Internally, the

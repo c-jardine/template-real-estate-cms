@@ -1,9 +1,11 @@
 import { defineType } from 'sanity';
-import { PropertyProps } from '../../src/types';
+import { PropertyProps } from '../../types';
+import { FaHome } from '@react-icons/all-files/fa/FaHome';
 
 export default defineType({
   name: 'residentialProperty',
   title: 'Residential Properties',
+  icon: FaHome,
   type: 'document',
   groups: [
     {

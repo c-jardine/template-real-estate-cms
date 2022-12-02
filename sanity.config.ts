@@ -1,6 +1,3 @@
-/**
- * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
- */
 import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import {
@@ -8,8 +5,19 @@ import {
   unsplashImageAsset,
 } from 'sanity-plugin-asset-source-unsplash';
 import { deskTool } from 'sanity/desk';
-
-import { schemaTypes } from './schemas';
+import {
+  FaqStructure,
+  PropertiesStructure,
+  SettingsStructure,
+} from './src/lib/sanity/structureBuilder';
+import { schemaTypes } from './src/schemas';
+import {
+  commercialPropertyType,
+  faqType,
+  landPropertyType,
+  residentialPropertyType,
+  settingsType,
+} from './src/schemas/documents';
 
 // @TODO: update next-sanity/studio to automatically set this when needed
 const basePath = '/studio';
@@ -24,11 +32,28 @@ const config = defineConfig({
     types: schemaTypes,
   },
   plugins: [
-    deskTool(),
-    // Add an image asset source for Unsplash
+    deskTool({
+      structure: (S) => {
+        // Custom structures
+        const properties = PropertiesStructure(S);
+        const faq = FaqStructure(S);
+        const settings = SettingsStructure(S);
+
+        const defaultListItems = S.documentTypeListItems().filter(
+          (listItem) =>
+            listItem.getId() !== residentialPropertyType.name &&
+            listItem.getId() !== commercialPropertyType.name &&
+            listItem.getId() !== landPropertyType.name &&
+            listItem.getId() !== faqType.name &&
+            listItem.getId() !== settingsType.name
+        );
+
+        return S.list()
+          .title('Content')
+          .items([properties, ...defaultListItems, faq, S.divider(), settings]);
+      },
+    }),
     unsplashImageAsset(),
-    // Vision lets you query your content with GROQ in the studio
-    // https://www.sanity.io/docs/the-vision-plugin
     visionTool({
       defaultApiVersion: '2022-08-08',
     }),

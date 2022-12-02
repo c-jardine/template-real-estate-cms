@@ -5,7 +5,7 @@ import {
   GeocodingRequestOptionsProps,
   WalkScoreRequestOptionsProps,
   WalkScoreResponseProps,
-} from '../../src/types';
+} from '../../types';
 
 const RAPID_API_KEY = process.env.NEXT_PUBLIC_RAPID_API_KEY;
 const GEOCODING_URL = process.env.NEXT_PUBLIC_GEOCODING_URL;

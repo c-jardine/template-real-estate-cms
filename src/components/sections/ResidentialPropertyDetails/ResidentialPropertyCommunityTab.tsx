@@ -9,7 +9,7 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import React from 'react';
-import requestWalkScore from '../../../../lib/helpers/walkscore';
+import requestWalkScore from '../../../lib/helpers/walkscore';
 import { PropertyProps, WalkScoreResponseProps } from '../../../types';
 
 const ResidentialPropertyCommunityTab = (props: PropertyProps) => {

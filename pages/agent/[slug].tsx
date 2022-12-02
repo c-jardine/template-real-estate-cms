@@ -21,14 +21,14 @@ import {
   realtorBySlugQuery,
   realtorSlugsQuery,
   urlFor,
-} from '../../lib/sanity';
+} from '../../src/lib/sanity';
 import {
   Header,
   PropertyCard,
   RealtorCardSocialLinkProps,
 } from '../../src/components';
 import { RealtorPageProps } from '../../src/types';
-import { generatePalette } from '../../lib/helpers/colors';
+import { generatePalette } from '../../src/lib/helpers/colors';
 
 const SocialLink = (props: RealtorCardSocialLinkProps) => {
   return (
